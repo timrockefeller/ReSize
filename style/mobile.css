@@ -1,0 +1,19 @@
+@media screen and (max-width: 600px) {
+    #back{
+        filter:blur(8px);
+        
+    }
+    #lists{
+        width:100%;
+        
+    }
+    #creatList-title{
+        width:80%;
+    }
+    h1{
+        font-size:4em;
+    }
+    #tasks{
+        width:100%;
+    }
+}

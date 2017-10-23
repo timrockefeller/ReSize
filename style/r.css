@@ -1,0 +1,334 @@
+/* Main Style */
+@font-face {
+    font-family: Ormont;
+    src: url('../include/font/Ormont_Light.otf'); /* IE9+ */
+}
+body {
+    font-family: Ormont;
+    background-color: #000;
+}
+h1 {
+    font-size:5.5em;
+}
+h3 {
+    font-size:1.1em;
+}
+
+::selection {
+    background: #DDD;
+    background: rgba(255,255,255,0.2);
+    color: #FFF;
+    text-shadow: none;
+}
+
+/*List Style*/
+.lstctnr{
+    border-width:10px 0;
+    padding:0px 20px;
+    color:#FFF;
+    transition: 0.2s ease;
+}
+.lstctnr:hover {
+    background:#CCC;
+    background:rgba(255,255,255,0.3);
+}
+.list-container {
+    width:100%;
+    height:5em;
+    padding:10px 0;
+    overflow-y: hidden;
+    transition: 1s ease;
+    overflow-x: hidden;
+}
+.list-info {
+    display:inline-flex;
+}
+.list-title {
+    color:#FFF;
+    color:rgba(255,255,255,0.95);
+    padding:0 1em;
+    display: inline-table;
+}
+.list-persent {
+    color:#AAA;
+    color:rgba(255,255,255,0.64);
+}
+.list-path {
+    overflow:hidden;
+    height:0.6em;
+    width:100%;
+    background:rgba(255,255,255,0.32);
+}
+.list-pathon {
+    height:100%;
+    background:rgba(255,255,255,0.94);
+}
+/*Operate*/
+
+.hidden-both {
+    padding:0;
+    border:0;
+    height:0em !important;
+}
+.hidden-width{
+    width:0em !important;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+
+/*menu*/
+
+.option-button {
+    height:2em;
+    width:2em;
+    right:0;
+    transition:0.2s ease;
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.option-button:hover {
+    background-color:#AAA;
+    background-color:rgba(255,255,255,0.6);
+}
+.option-button:active {
+    background-color:#999;
+    background-color:rgba(255,255,255,0.5);
+}
+
+
+/*Single By Id*/
+
+    /*Background*/
+    #back {
+        background: center no-repeat url("https://miao.su/images/2016/10/31/37602900_p0_master12002de0e.jpg");
+        background-color: #000;
+        background-size: cover;
+        /*-webkit-filter:blur(50px);*/
+        filter:blur(5px);
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        z-index:-1;
+    }
+    #back::after {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: #000;
+        background: rgba(0,0,0,0.55);
+        z-index: -1;
+    }
+    #titles{
+        margin: 0 auto;
+        top: 2em;
+        color:#FFF;
+        text-align: center;
+    }
+    #lists {/*container of ListS*/
+        background:#FFF;
+        background:rgba(0,0,0,0.1);
+        display: block;
+        width:60%;
+        margin:0 auto;
+    }
+    
+    #option{
+        color:#FFF;
+        font-size:1.4em;
+        height: 2em;
+        display:inline-flex;
+        width:100%;
+        margin:0 auto;
+    }
+    #creatList{
+        background-image:url("../include/imgs/add.png");
+    }
+    #creatList-inputbox{
+        width:100%;
+        display:inline-flex;
+        background:rgba(255,255,255,0.05);
+        overflow-x:hidden;
+        overflow-y:hidden;
+        transition:0.5s ease;
+    }
+    
+    #creatList-title {
+        
+        background:#000;
+        background:rgba(0,0,0,0);
+        border:none;
+        font-size: 1.1em;
+        color:#FFF;
+        font-family: inherit;
+        width:16em;
+        width:80%;
+    }
+    #creatList-title:focus{
+        background:#000;
+        background:rgba(0,0,0,0.4);
+        outline: none;
+    }
+    #creatList-access{
+        background-image:url("../include/imgs/access.png");
+    }
+    #creatList-cancle{
+        background-image:url("../include/imgs/back-white.png");
+    }
+    #mask{
+        position:absolute;
+        width:100%;
+        height:100%;
+        top: 0;
+        left: 0;
+        display:none;
+    }
+    
+    
+    
+    
+/*Detail Page*/
+
+
+#detailpage{
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    bottom: 0px;
+    background: #FFF;
+    transition: ease 500ms;
+    left: 0%;
+    overflow:hidden;
+}
+
+.detailbutton{
+    height: 38px;
+    width: 38px;
+    top: 16px;
+    position: absolute;    
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: ease .2s;
+}
+.detailbutton:hover{
+    background-color:rgba(0,0,0,0.07);
+}
+.detailbutton:active{
+    background-color:rgba(0,0,0,0.13);
+}
+#exitdetail {
+    right: 18px;
+    background-image: url("../include/imgs/back.png");
+}
+#deletedetail {
+    right:64px;
+    background-image: url("../include/imgs/delete.png");
+}
+.dethide{
+    height: 0% !important;
+}
+#dettitle{
+    padding:1.4em 0;
+    font-size: 3.5em;
+    text-align: center;
+}
+    
+#tasks{
+    width:80%;
+    margin:0 auto;
+}
+.task-container{
+    width: 100%;
+    height: 5em;
+    padding: 10px 0;
+    overflow-y: hidden;
+    transition: 1s ease;
+    overflow-x: hidden;
+}
+.tskctnr{
+    border-width:10px 0;
+    padding:0px 20px;
+    color:#000;
+    transition: 0.2s ease;
+}
+.tskctnr:hover {
+    background:#CCC;
+    background:rgba(0,0,0,0.05);
+}
+.task-path {
+    overflow:hidden;
+    height:0.6em;
+    width:100%;
+    background:rgba(0,0,0,0.32);
+}
+.task-pathon {
+    height:100%;
+    background:rgba(0,0,0,0.94);
+}
+.task-value{
+    font-size:1.6em;
+    font-weight: 900;
+}
+
+
+
+
+
+
+/*Extra Fields*/
+
+.questMask{
+    background:rgba(0,0,0,0.6);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    opacity: 0;
+    transition:0.2s ease;
+}
+.questAcvated{
+    opacity:1;
+}
+.questctr{
+    position: absolute;
+    height: 150px;
+    width: 320px;
+    left: 50%;
+    top: 50%;
+    margin: -75px 0 0 -160px;
+    background: #FFF;
+    border-radius: 10px;
+}
+.questButton{
+    display: inline-table;
+    width: 100px;
+    text-align: center;
+    background: #999;
+    color:#FFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.questButton:hover{
+    background: #666;
+}
+.questButton:active{
+    background: #555;
+}
+.questTEXT{
+    padding: 5px 20px 0 20px;
+    line-height: 1.2em;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>List.io</title>
+<link rel="stylesheet" type="text/css" href="style/r.css" />
+<link rel="stylesheet" type="text/css" href="style/mobile.css" />
+<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body ontouchstart="">
+    <div id="back"></div>
+    <div id="titles" unselectable="on">
+        <h1>List.io</h1>
+    </div>
+    
+    <div id="lists">
+    <div id="option" unselectable="on">
+        <div id="creatList" class='option-button'></div>
+        <div id="creatList-inputbox" class="hidden-width">
+            <input id="creatList-title" type="text" unselectable="off" autocomplete="off" class=""/>
+            <div id='creatList-access' class='option-button'></div>
+            <div id='creatList-cancle' class='option-button'></div>
+        </div>
+    </div>
+    </div>
+    
+    
+    <div id="detailpage" class="dethide">
+        <div id="exitdetail" class="detailbutton"></div>
+        <div id="deletedetail" class="detailbutton"></div>
+        <div id="dettitle"></div>
+        <div id="tasks">
+            		<!--div id = 'Taskhhhh' class='task-container'>
+		                <div class='task-path' style='background:#ffa70040'>
+		                    <div class='task-pathon' style='width:47.2%;background:#ffa700ff'></div>
+		                </div>
+		                <div class='task-value'></div>
+		                <div id>
+	    	        </div-->
+        </div>
+        <div id="detoption"></div>
+    </div>
+    
+    
+    <div id="mask"></div>
+    
+    
+    
+    <script type="text/javascript" src="function/r.js"></script>
+    <script type="text/javascript">
+        /*global REMS Network OfflineStorage $*/
+        document.getElementById("creatList").addEventListener("click",function(){
+    	    document.getElementById("creatList-inputbox").classList.remove("hidden-width");
+    	    document.getElementById("creatList").classList.add("hidden-width");
+    	document.getElementById("creatList-title").focus();
+    	document.getElementById("creatList-title").value = "";
+    });
+    document.getElementById("creatList-access").addEventListener("click",function(){
+    	if ($("#creatList-title").val()){
+    		Network.updateList({
+    			title:$("#creatList-title").val()
+            });
+            document.getElementById("creatList-inputbox").classList.add("hidden-width");
+        }
+    });
+    document.getElementById("creatList-cancle").addEventListener("click",function(){
+        document.getElementById("creatList-inputbox").classList.add("hidden-width");
+        document.getElementById("creatList").classList.remove("hidden-width");
+    });
+    document.getElementById("exitdetail").addEventListener("click",function(){
+        document.getElementById("detailpage").classList.add("dethide");
+        Network.updateList(OfflineStorage.Lists[OfflineStorage.OpenId]);
+        OfflineStorage.OpenId="";
+    });
+    document.getElementById("deletedetail").addEventListener("click",function(){
+        REMS.questHandle("None for recover, sure to delete?",function(){
+            document.getElementById("detailpage").classList.add("dethide");
+            OfflineStorage.Lists[OfflineStorage.OpenId].delete();
+            OfflineStorage.OpenId="";
+        });
+    });
+    setTimeout(function() {Network.getLists();}, 200);
+        
+    </script>
+</body>
+</html>
