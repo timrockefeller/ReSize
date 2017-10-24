@@ -256,7 +256,8 @@ TaskData{
 		tskctnr.setAttribute('class','tskctnr');
 		tskctnr.innerHTML = innerHTMLString;
 		tskctnr.addEventListener("click",function(){
-			
+			//add controller
+			//!!! Vue.js added
 		});
 		return tskctnr;
 	};
