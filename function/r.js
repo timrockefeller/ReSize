@@ -259,6 +259,7 @@ TaskData{
 			//add controller
 			//!!! Vue.js added
 		});
+		
 		return tskctnr;
 	};
 };

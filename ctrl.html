@@ -24,7 +24,7 @@
             left:0;
             background-color:#000;
         }
-        .ctrlHide{
+        .spaceHide{
             height:0;
         }
         .ctrlHide::before{
@@ -37,14 +37,10 @@
     
     
     <div id="tskctrl">
-            <div class="ctrlspace">
-                
-                
-                
-                
-                
-                
-                                
+            <div class="ctrlspace" @class="'spaceHide':!isSeen">
+                <ul v-for="cur">
+                    <li @class=cur":isDone(cur)"></li>
+                </ul>
             </div>
         
         
