@@ -12,7 +12,7 @@
             left:0;
             bottom:0;
             background-color:#fff;
-            transition:0.5s ease;
+            transition:.5s ease;
         }
         #tskctrl::before{
             content:"";
@@ -23,12 +23,30 @@
             top:0;
             left:0;
             background-color:#000;
+            transition:.5s ease;
         }
         .spaceHide{
             height:0;
         }
         .ctrlHide::before{
-            opacity:0;
+            opacity:0 !important;
+        }
+        .tagButton{
+            
+            height:20px;
+            
+            width:20px;
+            display:inline-table;
+        }
+        .tagctn::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height:10px;
+            left:0;
+            top:0;
+            opacity: 0.6;
+            background:url("include/imgs/tag_bg.png") repeat center;
         }
     </style>
 </head>
@@ -37,13 +55,15 @@
     
     
     <div id="tskctrl">
-            <div class="ctrlspace" @class="'spaceHide':!isSeen">
-                <ul v-for="cur">
-                    <li @class=cur":isDone(cur)"></li>
+            <div class="ctrlspace" @class="CssHide:!isSeen">
+                <ul class="tagctn" >
+                    <li class="tagButton"  v-for="cur in dots">
+                        <button @style="tagDone" v-if="cur<=donenum" >
+                        <button v-if="cur==donenum+1" value="+">
+                        <button v-if="cur>donenum+1" >
+                    </li>
                 </ul>
             </div>
-        
-        
     </div>
     
     
