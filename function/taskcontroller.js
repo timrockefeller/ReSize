@@ -5,6 +5,7 @@ global Vue
 var ctrl = new Vue({
     el:"#tskctrl",
     data:{
+        self:{},
         _isSeen:false,
         set isSeen(val){
             if(!val){
@@ -21,13 +22,15 @@ var ctrl = new Vue({
         isAdvance:false,
         num:0,
         donenum:0,
+        everyvalue:0,
         dots:[0],
         curs:0,
 
         color:"000000",
         CssHide:"spaceHide",
-        tagDone:{
-            backgrund:"#"+this.color
+        get tagDone(){
+            var s="rgb("+parseInt(this.color[0]+this.color[1],16)+","+parseInt(this.color[2]+this.color[3],16)+","+parseInt(this.color[4]+this.color[5],16)+")";
+            return {"backgroundColor":s}
         },
         
         init:function(TaskData){/*
@@ -39,19 +42,22 @@ var ctrl = new Vue({
 	        color: string
         }
         */
+            this.self=TaskData;
             this.num = TaskData.num;
             this.donenum = TaskData.donenum;
-            this.color = TaskData.color;
+            this.everyvalue = TaskData.everyvalue;
+            this.color = TaskData.color||"000000";
             this.dots = [0];
             for(var i =1 ;i<=this.num;i++){
                 this.dots[i]=i;
             }
         },
     },
-    method:{
+    methods:{
         doneNext:function(){
-            if(this.num<this.donenum){
-                this.num++;
+            if(this.donenum<this.num){
+                this.donenum++;
+                this.self.donenum++;
             }
         },
         isDone:function(cur){

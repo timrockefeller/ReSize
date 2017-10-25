@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="function/vue.min.js"></script>
     <title>taskcontroller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style type="text/css">
         .ctrlspace{
             position:absolute;
@@ -32,11 +33,13 @@
             opacity:0 !important;
         }
         .tagButton{
-            
-            height:20px;
-            
-            width:20px;
             display:inline-table;
+            padding:4px 0;
+        }
+        .tagul{
+            padding:20px 0;
+            width:80%;
+            margin:0 auto;
         }
         .tagctn::before {
             content: "";
@@ -48,6 +51,50 @@
             opacity: 0.6;
             background:url("include/imgs/tag_bg.png") repeat center;
         }
+        .tagButton > button{
+
+            background-color:#fff;
+            background-color:rgba(255,255,255,0);
+            
+            margin:auto 4px;
+            outline:none;
+            height:32px;
+            width: 32px;
+            border-radius: 16px;
+            border:2px solid #CCC;
+            transition: all .2s ease;
+        }
+        .tagNext{
+            background-image: url("include/imgs/add_black.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .tagNext:hover{
+            transform: scale(0.9);
+            border-color: #aaa;
+        }
+        .tagNext:active{
+            
+            transform: scale(0.8);
+            
+            border-width: 4px;
+            border-color: #999;
+        }
+
+        @media screen and (max-width: 600px) {
+            .tagButton > button{
+                transform: scale(1.2);
+                margin:auto 6px;
+                
+            }
+            .tagButton{
+                padding:6px 0;
+            }
+            
+            .tagNext:active{
+                transform: scale(0.8);
+            }
+        }
     </style>
 </head>
 <body>
@@ -56,13 +103,28 @@
     
     <div id="tskctrl">
             <div class="ctrlspace" @class="CssHide:!isSeen">
-                <ul class="tagctn" >
-                    <li class="tagButton"  v-for="cur in dots">
-                        <button @style="tagDone" v-if="cur<=donenum" >
-                        <button v-if="cur==donenum+1" value="+">
-                        <button v-if="cur>donenum+1" >
-                    </li>
-                </ul>
+
+
+
+
+
+
+
+
+
+
+                <div class="tagctn" >
+                    <ul class="tagul">
+                        <li class="tagButton"  v-for="cur in dots">
+                            <button v-bind:style="tagDone" v-if="cur<=donenum" >
+                            <button class="tagNext" v-else-if="cur==donenum+1" v-on:click="doneNext">
+                            <button v-else-if="cur>donenum+1" >
+                        </li>
+                    </ul>
+                </div>
+
+
+
             </div>
     </div>
     
