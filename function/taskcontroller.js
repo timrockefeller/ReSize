@@ -28,11 +28,23 @@ var ctrl = new Vue({
 
         color:"000000",
         CssHide:"spaceHide",
-        get tagDone(){
+        get StagDone(){
             var s="rgb("+parseInt(this.color[0]+this.color[1],16)+","+parseInt(this.color[2]+this.color[3],16)+","+parseInt(this.color[4]+this.color[5],16)+")";
-            return {"backgroundColor":s}
+            return {
+                "backgroundColor":s
+            };
         },
-        
+        get StagDoneA(){
+            var s="rgba("+parseInt(this.color[0]+this.color[1],16)+","+parseInt(this.color[2]+this.color[3],16)+","+parseInt(this.color[4]+this.color[5],16)+",.25)";
+            return {
+                "background":s
+            };
+        },
+        get Spersent(){
+            return {
+                "width":(100*this.donenum/this.num)+"%"
+            };
+        },
         init:function(TaskData){/*
         TaskData={
             TaskId: string,
@@ -42,14 +54,14 @@ var ctrl = new Vue({
 	        color: string
         }
         */
-            this.self=TaskData;
-            this.num = TaskData.num;
-            this.donenum = TaskData.donenum;
-            this.everyvalue = TaskData.everyvalue;
-            this.color = TaskData.color||"000000";
+            this.self = TaskData;
+            this.num = this.self.num;
+            this.donenum = this.self.donenum;
+            this.everyvalue = this.self.everyvalue;
+            this.color = this.self.color||"000000";
             this.dots = [0];
-            for(var i =1 ;i<=this.num;i++){
-                this.dots[i]=i;
+            for (var i = 1; i <= this.num; i++) {
+                this.dots[i] = i;
             }
         },
     },
@@ -59,9 +71,6 @@ var ctrl = new Vue({
                 this.donenum++;
                 this.self.donenum++;
             }
-        },
-        isDone:function(cur){
-            return cur<=this.num;
         }
         
     }

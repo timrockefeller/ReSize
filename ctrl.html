@@ -5,6 +5,7 @@
     <script type="text/javascript" src="function/vue.min.js"></script>
     <title>taskcontroller</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="style/r.css" />
     <style type="text/css">
         .ctrlspace{
             position:absolute;
@@ -105,18 +106,14 @@
             <div class="ctrlspace" @class="CssHide:!isSeen">
 
 
-
-
-
-
-
-
-
+                <div class='task-path' v-bind:style='StagDoneA'>
+		            <div class='task-pathon' v-bind:style='[StagDone,Spersent]'></div>
+		        </div>
 
                 <div class="tagctn" >
                     <ul class="tagul">
                         <li class="tagButton"  v-for="cur in dots">
-                            <button v-bind:style="tagDone" v-if="cur<=donenum" >
+                            <button v-bind:style="StagDone" v-if="cur<=donenum" >
                             <button class="tagNext" v-else-if="cur==donenum+1" v-on:click="doneNext">
                             <button v-else-if="cur>donenum+1" >
                         </li>
