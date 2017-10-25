@@ -103,7 +103,7 @@
     
     
     <div id="tskctrl">
-            <div class="ctrlspace" @class="CssHide:!isSeen">
+            <div class="ctrlspace" @class="CssHide:!isSeen"><!--IMPORTANT : delete the "!" before push to index.html -->
 
 
                 <div class='task-path' v-bind:style='StagDoneA'>
@@ -113,11 +113,16 @@
                 <div class="tagctn" >
                     <ul class="tagul">
                         <li class="tagButton"  v-for="cur in dots">
-                            <button v-bind:style="StagDone" v-if="cur<=donenum" >
-                            <button class="tagNext" v-else-if="cur==donenum+1" v-on:click="doneNext">
-                            <button v-else-if="cur>donenum+1" >
+                            <button v-bind:style="StagDone" v-if="cur<=donenum&&cur>0" >
+                            <button class="tagNext" v-else-if="cur==donenum+1&&cur>0" v-on:click="doneNext">
+                            <button v-else-if="cur>donenum+1&&cur>0" >
                         </li>
                     </ul>
+                </div>
+                <!--Advanced Model-->
+                <div v-if="isAdvanced">
+
+                    
                 </div>
 
 

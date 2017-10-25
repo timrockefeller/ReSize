@@ -276,6 +276,7 @@ h3 {
 .task-pathon {
     height:100%;
     background:rgba(0,0,0,0.94);
+    transition: ease 0.2s;
 }
 .task-value{
     font-size:1.6em;
