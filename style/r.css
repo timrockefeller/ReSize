@@ -286,7 +286,115 @@ h3 {
 
 
 
+/*ctrl*/
 
+        .ctrlspace{
+            position:absolute;
+            height:50%;
+            width:100%;
+            left:0;
+            bottom:0;
+            background-color:#fff;
+            transition:.5s ease;
+            overflow: hidden;
+        }
+        #tskctrl::before{
+            content:"";
+            position:absolute;
+            opacity:0.2;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            background-color:#000;
+            transition:.5s ease;
+        }
+        .ctrlHide > .ctrlspace{
+            height:0 !important;
+        }
+        .ctrlHide::before{
+            opacity:0 !important;
+        }
+        .tagButton{
+            display:inline-table;
+            padding:4px 0;
+        }
+        .tagul{
+            max-height: 50%;
+            overflow: auto;
+            padding: 20px 0;
+            width: 80%;
+            margin: 0 auto;
+            height: 50%;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+        .tagctn::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height:10px;
+            left:0;
+            top:0;
+            opacity: 0.6;
+            background:url("../include/imgs/tag_bg.png") repeat center;
+        }
+        .tagButton > button{
+
+            background-color:#fff;
+            background-color:rgba(255,255,255,0);
+            
+            margin:auto 4px;
+            outline:none;
+            height:32px;
+            width: 32px;
+            border-radius: 16px;
+            border:2px solid #CCC;
+            transition: all .2s ease;
+        }
+        .tagNext{
+            background-image: url("../include/imgs/add_black.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .tagNext:hover{
+            transform: scale(0.9);
+            border-color: #aaa;
+        }
+        .tagNext:active{
+            
+            transform: scale(0.8);
+            
+            border-width: 4px;
+            border-color: #999;
+        }
+        .ctrlAdvc{
+            height:20%;
+            width:80%;
+            top:70%;
+            left:10%;
+            position:absolute;
+        }
+        .ctrlSubmit{
+            height:10%;
+            width:10%;
+            outline: none;
+        }
+        @media screen and (max-width: 600px) {
+            .tagButton > button{
+                transform: scale(1.2);
+                margin:auto 6px;
+                
+            }
+            .tagButton{
+                padding:6px 0;
+            }
+            
+            .tagNext:active{
+                transform: scale(0.8);
+            }
+        }
 
 /*Extra Fields*/
 
