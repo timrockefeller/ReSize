@@ -61,6 +61,30 @@ var REMS = {/*
 		setTimeout(function() {
 			mask.classList.add("questAcvated");
 		}, 10);
+	},
+	randomHighVColor:function(){
+		return this.hslToRgb(Math.random(),1,.7);
+	},
+	hslToRgb:function(h, s, l) {
+    	var r, g, b;
+    	if(s == 0) {
+    	    r = g = b = l; // achromatic
+    	} else {
+    	    var hue2rgb = function hue2rgb(p, q, t) {
+    	        if (t < 0) t += 1;
+    	        if (t > 1) t -= 1;
+    	        if (t < 1/6) return p + (q - p) * 6 * t;
+    	        if (t < 1/2) return q;
+    	        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    	        return p;
+    	    };
+    	    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    	    var p = 2 * l - q;
+    	    r = hue2rgb(p, q, h + 1/3);
+    	    g = hue2rgb(p, q, h);
+    	    b = hue2rgb(p, q, h - 1/3);
+    	}
+    	return Math.round(r * 255).toString(16)+Math.round(g * 255).toString(16)+Math.round(b * 255).toString(16);
 	}
 };
 
@@ -176,6 +200,16 @@ ListData{
 	    }
 	}
 	//functions
+	this.reFreshPersent = function(){
+		var total=0,done=0;
+		for (var i in this.Tasks){
+			done+=this.Tasks[i].donenum*this.Tasks[i].everyvalue;
+			total+=this.Tasks[i].num*this.Tasks[i].everyvalue;
+		}
+		this.totalvalue=total;
+		this.persent=done/total;
+		return this.persent;
+	};
 	this.getElement = function(){
 	    return document.getElementById("List"+this.ListId);
 	};
@@ -223,6 +257,13 @@ ListData{
 			try{delete that.self;}catch(er){}
 		},1000);
 	};
+	this.networksync = function(){
+		Network.updateList({
+			ListId:this.ListId,
+			title:this.title,
+			Tasks:this.Tasks
+		});
+	};
 	this.self=this;
 };
 var Task = function(TaskData){/*
@@ -238,13 +279,15 @@ TaskData{
 	this.donenum = TaskData.donenum;
 	this.everyvalue = TaskData.everyvalue;
 	this.color = TaskData.color||"000000";//styles
+	this.ctnr = {};
 	//In Detail Page
 	
 	
 	this.onShowElement = function(){
-		document.getElementById("tasks").appendChild(this.createTaskElement());
+		this.ctnr=this.createTaskElement();
+		document.getElementById("tasks").appendChild(this.ctnr);
 	};
-
+	var that=this;
 	this.createTaskElement = function(){
 		var innerHTMLString = "\
 		<div id = 'Task"+this.TaskId+"' class='task-container'>\
@@ -257,13 +300,13 @@ TaskData{
 		tskctnr.setAttribute('class','tskctnr');
 		tskctnr.innerHTML = innerHTMLString;
 		
-		var that=this;
-		tskctnr.addEventListener("click",function(){
-			//add controller
-			//!!! Vue.js added
+		/*global ctrl*/
+		tskctnr.onclick=function(){
 			ctrl.init(that);
-		});
+		};
 		
 		return tskctnr;
 	};
 };
+ctrl.isSeen=true;
+ctrl.isSeen=false;

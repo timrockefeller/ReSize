@@ -31,6 +31,7 @@
     <div id="detailpage" class="dethide">
         <div id="exitdetail" class="detailbutton"></div>
         <div id="deletedetail" class="detailbutton"></div>
+        <div id="addTask" class="detailbutton"></div>
         <div id="dettitle"></div>
         <div id="tasks">
             		<!--div id = 'Taskhhhh' class='task-container'>
@@ -75,7 +76,6 @@
             </div>
     </div>
     
-<script type="text/javascript" src="function/taskcontroller.js"></script>
 
 
 
@@ -88,11 +88,11 @@
     <div id="mask"></div>
     
     
-    
-    <script type="text/javascript" src="function/r.js"></script>
     <script type="text/javascript" src="function/taskcontroller.js"></script>
+
+    <script type="text/javascript" src="function/r.js"></script>
     <script type="text/javascript">
-        /*global REMS Network OfflineStorage $*/
+        /*global REMS Network OfflineStorage Task $*/
         document.getElementById("creatList").addEventListener("click",function(){
     	    document.getElementById("creatList-inputbox").classList.remove("hidden-width");
     	    document.getElementById("creatList").classList.add("hidden-width");
@@ -114,6 +114,7 @@
     document.getElementById("exitdetail").addEventListener("click",function(){
         document.getElementById("detailpage").classList.add("dethide");
         Network.updateList(OfflineStorage.Lists[OfflineStorage.OpenId]);
+        OfflineStorage.Lists[OfflineStorage.OpenId].getElement().childNodes[3].childNodes[1].style.width = OfflineStorage.Lists[OfflineStorage.OpenId].reFreshPersent();
         OfflineStorage.OpenId="";
     });
     document.getElementById("deletedetail").addEventListener("click",function(){
@@ -123,7 +124,17 @@
             OfflineStorage.OpenId="";
         });
     });
-    setTimeout(function() {Network.getLists();}, 200);
+    document.getElementById("addTask").addEventListener("click",function(){
+        var a = OfflineStorage.Lists[OfflineStorage.OpenId].Tasks.push(new Task({
+            TaskId:"",
+            num:6,
+            donenum:0,
+            everyvalue:5,
+            color:REMS.randomHighVColor()
+        }));
+        OfflineStorage.Lists[OfflineStorage.OpenId].Tasks[a-1].onShowElement();
+    });
+    setTimeout(function() {Network.getLists();}, 100);
         
     </script>
 </body>

@@ -1,5 +1,5 @@
 /*
-global Vue
+global Vue $
 */
 
 var ctrl = new Vue({
@@ -11,10 +11,13 @@ var ctrl = new Vue({
             if(!val){
                 try{
                     document.getElementById("tskctrl").classList.add("ctrlHide");
+                    setTimeout(function(){document.getElementById("tskctrl").style.display="none";},500);
                 }catch(e){}
             }else{
                 try{
-                    document.getElementById("tskctrl").classList.remove("ctrlHide");
+                    document.getElementById("tskctrl").style.display="block";
+                    setTimeout(function(){document.getElementById("tskctrl").classList.remove("ctrlHide");},2);
+                    
                 }catch(e){}
             }
             console.info("seted");
@@ -124,6 +127,7 @@ var ctrl = new Vue({
         },
         exitPage:function(){
             this.isSeen=false;
+            this.self.ctnr.childNodes[1].childNodes[3].childNodes[1].style.width=(100*this.donenum/this.num)+"%";
         }
         
     }

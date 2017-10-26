@@ -236,6 +236,10 @@ h3 {
     right:64px;
     background-image: url("../include/imgs/delete.png");
 }
+#addTask {
+    left: 18px;
+    background-image: url("../include/imgs/add_black.png")
+}
 .dethide{
     height: 0% !important;
 }
