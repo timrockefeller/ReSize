@@ -42,7 +42,46 @@
 	    	        </div-->
         </div>
         
-        <div id="detoption"></div>
+        <div id="detoption">
+
+    <div id="tskctrl">
+            <div class="ctrlspace"><!--IMPORTANT : delete the "!" before push to index.html -->
+
+
+                <div class='task-path' v-bind:style='StagDoneA'>
+		            <div class='task-pathon' v-bind:style='[StagDone,Spersent]'></div>
+		        </div>
+
+                <div class="tagctn" >
+                    <ul class="tagul">
+                        <li class="tagButton"  v-for="cur in dots">
+                            <button v-bind:style="StagDone" v-if="cur<=donenum && cur>=1" >
+                            <button class="tagNext" v-if="cur==donenum+1" @click="doneNext">
+                            <button v-if="cur>=donenum+2" >
+                        </li>
+                    </ul>
+                </div>
+                <!--Advanced Model-->
+                <div @click="exitPage" v-bind:style="Sexit" class="detailbutton"></div>
+                <div class="ctrlAdvc" v-if="isAdvance">
+                    <hr/>
+                    Done Count<input v-model="donenum__" id="donenumInput"><br/>
+                    Max Count:<input v-model="num__" id="numInput">
+                    <button class="ctrlSubmit" value="submit" @click="submitNum">
+                </div>
+
+
+
+            </div>
+    </div>
+    
+<script type="text/javascript" src="function/taskcontroller.js"></script>
+
+
+
+
+
+        </div>
     </div>
     
     

@@ -9,9 +9,13 @@ var ctrl = new Vue({
         _isSeen:false,
         set isSeen(val){
             if(!val){
-                document.getElementById("tskctrl").classList.add("ctrlHide");
+                try{
+                    document.getElementById("tskctrl").classList.add("ctrlHide");
+                }catch(e){}
             }else{
-                document.getElementById("tskctrl").classList.remove("ctrlHide");
+                try{
+                    document.getElementById("tskctrl").classList.remove("ctrlHide");
+                }catch(e){}
             }
             console.info("seted");
             this._isSeen=val?true:false;
@@ -40,11 +44,17 @@ var ctrl = new Vue({
                 "background":s
             };
         },
+        Sexit:{
+            right: "18px",
+            backgroundImage: "url(include/imgs/back.png)",//file list Warning
+        },
         get Spersent(){
             return {
                 "width":(100*this.donenum/this.num)+"%"
             };
         },
+        num__:0,
+        donenum__:0,
         init:function(TaskData){/*
         TaskData={
             TaskId: string,
@@ -57,20 +67,63 @@ var ctrl = new Vue({
             this.self = TaskData;
             this.num = this.self.num;
             this.donenum = this.self.donenum;
+            this.num__ = this.num;
+            this.donenum__ = this.donenum;
             this.everyvalue = this.self.everyvalue;
             this.color = this.self.color||"000000";
             this.dots = [0];
             for (var i = 1; i <= this.num; i++) {
                 this.dots[i] = i;
             }
+            //var that=this;
+            //$("#donenumInput").val(that.donenum);
+            //$("#numInput").val(that.num);
+            this.isSeen=true;
+            this.isAdvance=false;
+            return this;
         },
     },
     methods:{
         doneNext:function(){
             if(this.donenum<this.num){
                 this.donenum++;
+                this.donenum__++;
                 this.self.donenum++;
             }
+            var that=this;
+            $("#donenumInput").val(that.donenum);
+        },
+        /*onSyncNum:function(){
+            this.donenum__ = $("#donenumInput").val() || this.donenum__;
+            var that=this;
+            $("#numInput").val(that.num__);
+        },
+        onSyncDonenum:function(){
+             this.num__ = $("#numInput").val() || this.num__;
+             var that=this;
+             $("#donenumInput").val(that.donenum__);
+        },*/
+        submitNum:function(){
+            var that=this;
+            this.donenum__ = $("#donenumInput").val() || this.donenum__;
+            this.num__ = $("#numInput").val() || this.num__;
+
+            if(this.donenum__ > this.num__){
+                this.donenum__ = this.num__;
+            }
+            this.num=this.num__;
+            this.self.num=this.num;
+            this.dots = [0];
+            for (var i = 1; i <= this.num; i++) {//advice: make Jiaoji+Bingji
+                this.dots[i] = i;
+            }
+            this.donenum = this.donenum__;
+            this.self.donenum=this.donenum;
+            this.donenum--;//refresh vue
+            this.donenum++;
+        },
+        exitPage:function(){
+            this.isSeen=false;
         }
         
     }
@@ -78,3 +131,11 @@ var ctrl = new Vue({
 });
 
 //_.debounce()
+/*/for test begin
+ctrl.init({TaskId:"asd",
+	        num: 6,
+	        everyvalue: 5,
+	        donenum: 0,
+	        color: "f656ea"}).isAdvance=true;
+            
+//for test end*/

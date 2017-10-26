@@ -244,6 +244,7 @@ TaskData{
 	this.onShowElement = function(){
 		document.getElementById("tasks").appendChild(this.createTaskElement());
 	};
+
 	this.createTaskElement = function(){
 		var innerHTMLString = "\
 		<div id = 'Task"+this.TaskId+"' class='task-container'>\
@@ -255,9 +256,12 @@ TaskData{
 		var tskctnr = document.createElement('section');
 		tskctnr.setAttribute('class','tskctnr');
 		tskctnr.innerHTML = innerHTMLString;
+		
+		var that=this;
 		tskctnr.addEventListener("click",function(){
 			//add controller
 			//!!! Vue.js added
+			ctrl.init(that);
 		});
 		
 		return tskctnr;
