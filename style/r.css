@@ -203,11 +203,14 @@ h3 {
 
 
 #detailpage{
+    background-image:url("../include/imgs/mathbg.png");
+    background-repeat: repeat;
+    background-position: center;
     position: absolute;
     width: 100%;
     height: 95%;
     bottom: 0px;
-    background: #FFF;
+    background-color: #FFF;
     transition: ease 500ms;
     left: 0%;
     overflow:hidden;

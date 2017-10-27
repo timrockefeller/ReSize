@@ -291,7 +291,7 @@ TaskData{
 	this.createTaskElement = function(){
 		var innerHTMLString = "\
 		<div id = 'Task"+this.TaskId+"' class='task-container'>\
-			<div class='task-value'>"+(this.donenum*this.everyvalue)+" / "+(this.num*this.everyvalue)+"</div>\
+			<div class='task-value'>("+this.donenum+" : "+this.num+") * "+this.everyvalue+" = "+(this.everyvalue*this.num)+"</div>\
 			<div class='task-path' style='background:#"+this.color+"40'>\
 		    	<div class='task-pathon' style='width:"+(this.donenum/this.num*100)+"%;background:#"+this.color+"ff'></div>\
 			</div>\
