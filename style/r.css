@@ -254,6 +254,8 @@ h3 {
     
 #tasks{
     width:80%;
+    height:70%;
+    overflow-y:scroll;
     margin:0 auto;
 }
 .task-container{
